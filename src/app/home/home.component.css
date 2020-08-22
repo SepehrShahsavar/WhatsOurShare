@@ -1,0 +1,15 @@
+.intro {
+background-color: #e8ded2;
+}
+
+.inputs {
+  background-color: #a3d2ca;
+}
+
+.result {
+  background-color: #5eaaa8;
+}
+
+.expand {
+  transition: all 0.5s ease-in-out;
+}

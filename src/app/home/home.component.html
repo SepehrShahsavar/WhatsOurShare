@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="row p-3 intro">
+    <div class="col-6">
+      <img class="w-75" src="assets/img/f2.png" alt="friends">
+    </div>
+    <div class="col-6">
+      <blockquote class="center blockquote">
+        <h5>Ola lazy people !</h5>
+        <p class="p-5 font-italic">
+          " So , we all go out with our friends and always pay for tickets , foods and etc and
+          everybody pays for something and at end calculating who is going to pay how much to whom is a total mess !
+          So I'm here to help :D "
+        </p>
+      </blockquote>
+    </div>
+  </div>
+  <div class="row justify-content-center inputs p-3">
+    <div class="col-sm-4 mt-4">
+      <form>
+        <h6 class="text-center">Enter peoples name and how much they paid : </h6>
+        <hr>
+
+        <div class="form-group">
+          <input type="text" class="form-control" required name="name" [(ngModel)]="name"  placeholder="Name">
+        </div>
+
+        <div class="form-group">
+          <input type="text" class="form-control" required name="cost" [(ngModel)]="cost"  placeholder="Cost">
+        </div>
+
+        <div class="form-group text-center">
+          <button class="btn btn-primary mr-2" type="button" (click)="addToList()">Add</button>
+          <button class="btn btn-danger mr-2" type="button" (click)="resetList()">Reset</button>
+          <button class="btn btn-success" type="button" [disabled]="canCalculate()" (click)="calculateShares()">What's Our Share ?</button>
+        </div>
+      </form>
+    </div>
+    <div class="col-sm-6 d-flex justify-content-end">
+      <img class="w-50" src="assets/img/thinking.png" alt="rare footage of me thinking">
+    </div>
+  </div>
+  <div *ngIf="displayResult" class="row d-flex justify-content-center">
+    <div class="col-sm-12 p-2 expand result">
+      <table class="table table-borderless">
+        <thead>
+          <tr>
+            <th scope="col" class="text-center">#</th>
+            <th *ngFor="let item of listOfParticipants" scope="col" class="text-center">{{item.name}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let cost of shareTable; let i = index">
+            <td class="text-center">{{listOfParticipants[i].name}}</td>
+            <td *ngFor="let payment of cost " class="text-center">{{payment}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
